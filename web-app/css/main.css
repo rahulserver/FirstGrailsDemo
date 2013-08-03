@@ -600,5 +600,17 @@ input[type='text'] {
 input[name='School']{
     width:150px;
 }
-
+input[type='button']{
+    background: ButtonFace; color: ButtonText;
+}
+table.cellVisible td {
+    border-left:1px solid green;
+    border-right:1px solid green;
+    background-color:#b2d1ff;
+}
+table.cellVisible th {
+    text-align:center;
+    border-left:1px solid red;
+    border-right:1px solid red;
+}
 
