@@ -32,87 +32,18 @@
             </g:eachError>
         </ul>
     </g:hasErrors>
-    <g:form action="save">
-        <fieldset class="form">
-            <g:render template="form"/>
-        </fieldset>
+    <g:form action="save" >
+        <div style="width:inherit;overflow:auto;">
+            <fieldset  class="form" >
+                <g:render template="tabbedForm" />
+            </fieldset>
+        </div>
         <fieldset class="buttons">
             <g:submitButton name="create" class="save"
                             value="${message(code: 'default.button.create.label', default: 'Create')}"/>
         </fieldset>
     </g:form>
-    <div class="employmentHistory">
-        <table class="employmentHistoryForm">
-            <tr>
 
-                    <th>Name</th>
-                    <th>Position</th>
-                    <th>Action</th>
-
-            </tr>
-            <tr class = "row">
-                <td>
-                    <g:textField id="name" name="company" ></g:textField></td>
-                <td>
-                    <g:textField id="position" name="position"  ></g:textField></td>
-                <td><input type="button" class="deleteThisRow"  value="Delete"/></td>
-            </tr>
-        </table>
-    <g:textField name="sumCompany" id="destination" ></g:textField>
-    </div>
-    <input type="button" id="btnAddMore"  value="add more"/>
-    <script type="text/javascript">
-        var rowIndex=0;
-        var colIndex=0;
-        $(document).ready(function(){
-
-            var idCounter=0;
-
-            $('#btnAddMore').click(function(){
-                var clonedSection = $(".row").clone();
-                clonedSection.children().children().addClass("col" + idCounter);
-                $('.employmentHistoryForm tr:last').after('<tr class = "row">' + clonedSection.html() + '</tr>');
-                idCounter++;
-            });
-
-            //when you click on the button called "delete", the function inside will be triggered.
-            $('.deleteThisRow').live('click',function(){
-                var rowLength = $('.row').length;
-                //this line makes sure that we don't ever run out of rows.
-                if(rowLength > 1){
-                    deleteRow(this);
-                    idCounter--;
-                }
-            });
-
-            function deleteRow(currentNode){
-                $(currentNode).parent().parent().remove();
-            }
-            index++;
-        });
-//        $(document).on("change", "input[class *= 'company']", function() {
-//            var i = 1;
-//            $("button").click(function() ​​​{
-//                $(".employmentHistoryForm tr:first").clone().find("input").each(function() {
-//                    $(this).val('').attr('id', function(_, id) { return id + i });
-//                }).end().appendTo(".employmentHistoryForm");
-//                i++;
-//            })​;
-//        });
-        $(document).on("change", "input[class *= 'company']", function() {
-            var sum1 = 0;
-            var sum2=0;
-
-            $("input[class *= 'company']").each(function(){
-                sum1 += +$(this).val();
-            });
-            $("input[class *= 'pos']").each(function(){
-                sum2 += +$(this).val();
-            });
-
-            $("#destination").val(sum1+sum2);
-        });
-    </script>
 </div>
 </body>
 </html>

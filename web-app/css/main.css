@@ -594,3 +594,11 @@ a.skip {
 	position: absolute;
 	left: -9999px;
 }
+input[type='text'] {
+    width:50px;
+}
+input[name='School']{
+    width:150px;
+}
+
+
