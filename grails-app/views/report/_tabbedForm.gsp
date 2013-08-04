@@ -1,27 +1,32 @@
 <%@ page import="firstgrailsdemo.Report" %>
 <script language="JavaScript">
+    //Toggles the select all functionality
     function toggle(source) {
         checkboxes = document.getElementsByName('foo');
         for (var i = 0, n = checkboxes.length; i < n; i++) {
             checkboxes[i].checked = source.checked;
         }
     }
+    //Checks if entered key is a valid integer
     function isNumberKey(evt) {
         var charCode = (evt.which) ? evt.which : event.keyCode
         if (charCode > 31 && (charCode < 48 || charCode > 57))
             return false;
         return true;
     }
+    //Deletes all selected rows
     $(function () {
         $('#btnDelete').on('click', function () {
             $('.row').has('input[name=foo]:checked:not(.Row0)').remove();
         });
 
     });
+    //Calculates sum of columns and puts it in table footer
+    var schoolCount = 0;
     $(function () {
         $('#btnCalculate').on('click', function () {
             var T3 = 0, T4 = 0, T5 = 0, T6 = 0, T7 = 0, T8 = 0, T9 = 0, T10 = 0, T11 = 0, T12 = 0, TCol = 0;
-            var schoolCount = 0;
+
             $("input[name = 'School']").each(function () {
                 if ($(this).val().length == 0) {
                     $(this).val("School" + schoolCount);
@@ -142,6 +147,7 @@
         });
 
     });
+    //Show selected tab
     function onShowTab(index) {
         var numberTabs = 3;
         for (var i = 1; i < (numberTabs + 1); i++) {
@@ -161,7 +167,303 @@
         var tabSheet = document.getElementById('tab' + index);
         tabSheet.style.display = "block";
     }
+    //For form navigation using arrow keys
+    $(document).ready(function(){
+        $('body').on('keyup','input',function(e){
+            if(e.which==39)
+                $(this).closest('td').next().find('input').focus();
+            else if(e.which==37)
+                $(this).closest('td').prev().find('input').focus();
+            else if(e.which==40)
+                $(this).closest('tr').next().find('td:eq('+$(this).closest('td').index()+')').find('input').focus();
+            else if(e.which==38)
+                $(this).closest('tr').prev().find('td:eq('+$(this).closest('td').index()+')').find('input').focus();
+        });
+    });
+    //Shows the calculated prizes for the input where the mouseMoved event occurs
+    $(function(){
+        $("body").on('mouseover','input[id^=Class3]',function(){
+            if(($(this).attr('id')!='Class3T')){
+                var m='#'+ $(this).attr('id');
+                $(getPrizeDiv(3,$(this).attr('value'))).insertAfter($(m));
+            }
+    })});
+    $(function(){
+        $("body").on('mouseout','input[id^=Class3]',function(){
+            if(($(this).attr('id')!='Class3T'))
+                $("#tooltip").fadeOut().remove();
+        })});
+    $(function(){
+        $("body").on('mouseover','input[id^=Class4]',function(){
+            if(($(this).attr('id')!='Class4T')){
+                var m='#'+ $(this).attr('id');
+                $(getPrizeDiv(4,$(this).attr('value'))).insertAfter($(m));
+            }
+    })});
+    $(function(){
+        $("body").on('mouseout','input[id^=Class4]',function(){
+            if(($(this).attr('id')!='Class4T'))
+                $("#tooltip").fadeOut().remove();
+        })});
+    $(function(){
+        $("body").on('mouseover','input[id^=Class5]',function(){
+            if(($(this).attr('id')!='Class5T')){
+                var m='#'+ $(this).attr('id');
+                $(getPrizeDiv(5,$(this).attr('value'))).insertAfter($(m));
+            }
+        })});
+    $(function(){
+        $("body").on('mouseout','input[id^=Class5]',function(){
+            if(($(this).attr('id')!='Class5T'))
+                $("#tooltip").fadeOut().remove();
+        })});
+    $(function(){
+        $("body").on('mouseover','input[id^=Class6]',function(){
+            if(($(this).attr('id')!='Class6T')){
+                var m='#'+ $(this).attr('id');
+                $(getPrizeDiv(6,$(this).attr('value'))).insertAfter($(m));
+            }
+        })});
+    $(function(){
+        $("body").on('mouseout','input[id^=Class6]',function(){
+            if(($(this).attr('id')!='Class6T'))
+                $("#tooltip").fadeOut().remove();
+        })});
+    $(function(){
+        $("body").on('mouseover','input[id^=Class7]',function(){
+            if(($(this).attr('id')!='Class7T')){
+                var m='#'+ $(this).attr('id');
+                $(getPrizeDiv(7,$(this).attr('value'))).insertAfter($(m));
+            }
+        })});
+    $(function(){
+        $("body").on('mouseout','input[id^=Class7]',function(){
+            if(($(this).attr('id')!='Class7T'))
+                $("#tooltip").fadeOut().remove();
+        })});
+    $(function(){
+        $("body").on('mouseover','input[id^=Class8]',function(){
+            if(($(this).attr('id')!='Class8T')){
+                var m='#'+ $(this).attr('id');
+                $(getPrizeDiv(8,$(this).attr('value'))).insertAfter($(m));
+            }
+        })});
+    $(function(){
+        $("body").on('mouseout','input[id^=Class8]',function(){
+            if(($(this).attr('id')!='Class8T'))
+                $("#tooltip").fadeOut().remove();
+        })});
+    $(function(){
+        $("body").on('mouseover','input[id^=Class9]',function(){
+            if(($(this).attr('id')!='Class9T')){
+                var m='#'+ $(this).attr('id');
+                $(getPrizeDiv(9,$(this).attr('value'))).insertAfter($(m));
+            }
+        })});
+    $(function(){
+        $("body").on('mouseout','input[id^=Class9]',function(){
+            if(($(this).attr('id')!='Class9T'))
+                $("#tooltip").fadeOut().remove();
+        })});
+    $(function(){
+        $("body").on('mouseover','input[id^=Class10]',function(){
+            if(($(this).attr('id')!='Class10T')){
+                var m='#'+ $(this).attr('id');
+                $(getPrizeDiv(10,$(this).attr('value'))).insertAfter($(m));
+            }
+        })});
+    $(function(){
+        $("body").on('mouseout','input[id^=Class10]',function(){
+            if(($(this).attr('id')!='Class10T'))
+                $("#tooltip").fadeOut().remove();
+        })});
+    $(function(){
+        $("body").on('mouseover','input[id^=Class11]',function(){
+            if(($(this).attr('id')!='Class11T')){
+                var m='#'+ $(this).attr('id');
+                $(getPrizeDiv(11,$(this).attr('value'))).insertAfter($(m));
+            }
+        })});
+    $(function(){
+        $("body").on('mouseout','input[id^=Class11]',function(){
+            if(($(this).attr('id')!='Class11T'))
+                $("#tooltip").fadeOut().remove();
+        })});
+    $(function(){
+        $("body").on('mouseover','input[id^=Class12]',function(){
+            if(($(this).attr('id')!='Class12T')){
+                var m='#'+ $(this).attr('id');
+                $(getPrizeDiv(12,$(this).attr('value'))).insertAfter($(m));
+            }
+        })});
+    $(function(){
+        $("body").on('mouseout','input[id^=Class12]',function(){
+            if(($(this).attr('id')!='Class12T'))
+                $("#tooltip").fadeOut().remove();
+        })});
+    $(function(){
+        $("body").on('mouseover','input[id^=College]',function(){
+            if(($(this).attr('id')!='CollegeT')){
+                var m='#'+ $(this).attr('id');
+                $(getPrizeDiv(13,$(this).attr('value'))).insertAfter($(m));
+            }
+        })});
+    $(function(){
+        $("body").on('mouseout','input[id^=College]',function(){
+            if(($(this).attr('id')!='CollegeT'))
+                $("#tooltip").fadeOut().remove();
+        })});
+    $(function(){
+        $("body").on('mouseover','input[id^=School]',function(){
+            if(($(this).attr('id')!='SchoolT')){
+                var m='#'+ $(this).attr('id');
+                $(getSchoolwisePrizeCountDiv($(this).attr('class'))).insertAfter($(m));
+            }
+        })});
+    $(function(){
+        $("body").on('mouseout','input[id^=School]',function(){
+            if(($(this).attr('id')!='SchoolT'))
+                $("#tooltip").fadeOut().remove();
+        })});
 
+    function getPrizeDiv(className,studentCount){
+        var returnVal;
+        if(className==3){
+            if(studentCount>=15 && studentCount<51){
+                returnVal="<table><thead><th>I</th><th>II</th><th>III</th></thead><tr><td>Geometry Box,<br/>Tulsi Goli</td><td>0</td><td>0</td></tr></table>"
+            }
+            else if(studentCount>=51){
+                returnVal="<table><thead><th>I</th><th>II</th><th>III</th></thead><tr><td>Geometry Box,<br/>Tulsi Goli</td><td>Sapsidi ka khel</td><td>Drawing Book,<br/>Colour</td></tr></table>"
+            }
+            else{
+                returnVal="<table><thead><th>I</th><th>II</th><th>III</th></thead><tr><td>0</td><td>0</td><td>0</td></tr></table>"
+            }
+        }
+        else if(className==4){
+            if(studentCount>=15 && studentCount<51){
+                returnVal="<table><thead><th>I</th><th>II</th><th>III</th></thead><tr><td>Chhoti Ghadi</td><td>0</td><td>0</td></tr></table>"
+            }
+            else if(studentCount>=51){
+                returnVal="<table><thead><th>I</th><th>II</th><th>III</th></thead><tr><td>Chhoti Ghadi</td><td>Geometry Box,<br/>Tulsi Goli</td><td>Sapsidi ka khel</td></tr></table>"
+            }
+            else{
+                returnVal="<table><thead><th>I</th><th>II</th><th>III</th></thead><tr><td>0</td><td>0</td><td>0</td></tr></table>"
+            }
+        }
+        else if(className==5){
+            if(studentCount>=15 && studentCount<51){
+                returnVal="<table><thead><th>I</th><th>II</th><th>III</th></thead><tr><td>Chhoti Ghadi</td><td>0</td><td>0</td></tr></table>"
+            }
+            else if(studentCount>=51){
+                returnVal="<table><thead><th>I</th><th>II</th><th>III</th></thead><tr><td>Chhoti Ghadi</td><td>Geometry Box,<br/>Tulsi Goli</td><td>Sapsidi ka khel</td></tr></table>"
+            }
+            else{
+                returnVal="<table><thead><th>I</th><th>II</th><th>III</th></thead><tr><td>0</td><td>0</td><td>0</td></tr></table>"
+            }
+        }else if(className==6){
+            if(studentCount>=15 && studentCount<51){
+                returnVal="<table><thead><th>I</th><th>II</th><th>III</th></thead><tr><td>Karmaphal Khel</td><td>0</td><td>0</td></tr></table>"
+            }
+            else if(studentCount>=51){
+                returnVal="<table><thead><th>I</th><th>II</th><th>III</th></thead><tr><td>Karmaphal Khel</td><td>Chhoti Ghadi</td><td>Pouch</td></tr></table>"
+            }
+            else{
+                returnVal="<table><thead><th>I</th><th>II</th><th>III</th></thead><tr><td>0</td><td>0</td><td>0</td></tr></table>"
+            }
+        }else if(className==7){
+            if(studentCount>=15 && studentCount<51){
+                returnVal="<table><thead><th>I</th><th>II</th><th>III</th></thead><tr><td>Karmaphal Khel</td><td>0</td><td>0</td></tr></table>"
+            }
+            else if(studentCount>=51){
+                returnVal="<table><thead><th>I</th><th>II</th><th>III</th></thead><tr><td>Karmaphal Khel</td><td>Badi Ghadi</td><td>Pouch</td></tr></table>"
+            }
+            else{
+                returnVal="<table><thead><th>I</th><th>II</th><th>III</th></thead><tr><td>0</td><td>0</td><td>0</td></tr></table>"
+            }
+        }else if(className==8){
+            if(studentCount>=15 && studentCount<51){
+                returnVal="<table><thead><th>I</th><th>II</th><th>III</th></thead><tr><td>Karmaphal Khel</td><td>0</td><td>0</td></tr></table>"
+            }
+            else if(studentCount>=51){
+                returnVal="<table><thead><th>I</th><th>II</th><th>III</th></thead><tr><td>Karmaphal Khel</td><td>Badi Ghadi</td><td>Pouch</td></tr></table>"
+            }
+            else{
+                returnVal="<table><thead><th>I</th><th>II</th><th>III</th></thead><tr><td>0</td><td>0</td><td>0</td></tr></table>"
+            }
+        }else if(className==9){
+            if(studentCount>=15 && studentCount<51){
+                returnVal="<table><thead><th>I</th><th>II</th><th>III</th></thead><tr><td>College Bag</td><td>0</td><td>0</td></tr></table>"
+            }
+            else if(studentCount>=51){
+                returnVal="<table><thead><th>I</th><th>II</th><th>III</th></thead><tr><td>College Bag</td><td>Badi Ghadi</td><td>Pouch</td></tr></table>"
+            }
+            else{
+                returnVal="<table><thead><th>I</th><th>II</th><th>III</th></thead><tr><td>0</td><td>0</td><td>0</td></tr></table>"
+            }
+        }else if(className==10){
+            if(studentCount>=15 && studentCount<51){
+                returnVal="<table><thead><th>I</th><th>II</th><th>III</th></thead><tr><td>College Bag</td><td>0</td><td>0</td></tr></table>"
+            }
+            else if(studentCount>=51){
+                returnVal="<table><thead><th>I</th><th>II</th><th>III</th></thead><tr><td>College Bag</td><td>Badi Ghadi</td><td>Pouch</td></tr></table>"
+            }
+            else{
+                returnVal="<table><thead><th>I</th><th>II</th><th>III</th></thead><tr><td>0</td><td>0</td><td>0</td></tr></table>"
+            }
+        }else if(className==10){
+            if(studentCount>=15 && studentCount<51){
+                returnVal="<table><thead><th>I</th><th>II</th><th>III</th></thead><tr><td>College Bag</td><td>0</td><td>0</td></tr></table>"
+            }
+            else if(studentCount>=51){
+                returnVal="<table><thead><th>I</th><th>II</th><th>III</th></thead><tr><td>College Bag</td><td>Badi Ghadi</td><td>Pouch</td></tr></table>"
+            }
+            else{
+                returnVal="<table><thead><th>I</th><th>II</th><th>III</th></thead><tr><td>0</td><td>0</td><td>0</td></tr></table>"
+            }
+        }else if(className==11){
+            if(studentCount>=15 && studentCount<51){
+                returnVal="<table><thead><th>I</th><th>II</th><th>III</th></thead><tr><td>College Bag</td><td>0</td><td>0</td></tr></table>"
+            }
+            else if(studentCount>=51){
+                returnVal="<table><thead><th>I</th><th>II</th><th>III</th></thead><tr><td>College Bag</td><td>Badi Ghadi</td><td>Pouch</td></tr></table>"
+            }
+            else{
+                returnVal="<table><thead><th>I</th><th>II</th><th>III</th></thead><tr><td>0</td><td>0</td><td>0</td></tr></table>"
+            }
+        }else if(className==12){
+            if(studentCount>=15 && studentCount<51){
+                returnVal="<table><thead><th>I</th><th>II</th><th>III</th></thead><tr><td>College Bag</td><td>0</td><td>0</td></tr></table>"
+            }
+            else if(studentCount>=51){
+                returnVal="<table><thead><th>I</th><th>II</th><th>III</th></thead><tr><td>College Bag</td><td>Badi Ghadi</td><td>Pouch</td></tr></table>"
+            }
+            else{
+                returnVal="<table><thead><th>I</th><th>II</th><th>III</th></thead><tr><td>0</td><td>0</td><td>0</td></tr></table>"
+            }
+        }else if(className==13){
+            if(studentCount>=15 && studentCount<51){
+                returnVal="<table><thead><th>I</th><th>II</th><th>III</th></thead><tr><td>College Bag</td><td>0</td><td>0</td></tr></table>"
+            }
+            else if(studentCount>=51){
+                returnVal="<table><thead><th>I</th><th>II</th><th>III</th></thead><tr><td>College Bag</td><td>College Bag</td><td>College Bag</td></tr></table>"
+            }
+            else{
+                returnVal="<table><thead><th>I</th><th>II</th><th>III</th></thead><tr><td>0</td><td>0</td><td>0</td></tr></table>"
+            }
+        }
+        return "<div id='tooltip' style='background-color: #E0F0FF'>" + returnVal + "</div>"
+    }
+    function getSchoolwisePrizeCountDiv(classRowIndex){
+        var m=document.getElementsByClassName(classRowIndex);
+        var i=0;
+        for(var n in m){
+            if(i==0){
+                continue;
+            }
+            i++;
+        }
+
+    }
 </script>
 <table>
     <tr>
@@ -211,28 +513,28 @@
 
                     </tr>
                     <tr class="row">
-                        <td><g:textField name="School" class="Row0"></g:textField></td>
-                        <td><g:textField name="Class3" class="Row0" value="0"
+                        <td><g:textField id="SchoolRow0" name="School" class="Row0"></g:textField></td>
+                        <td><g:textField id="Class3Row0" name="Class3" class="Row0" value="0"
                                          onkeypress="return isNumberKey(event)"></g:textField></td>
-                        <td><g:textField name="Class4" class="Row0" value="0"
+                        <td><g:textField id="Class4Row0" name="Class4" class="Row0" value="0"
                                          onkeypress="return isNumberKey(event)"></g:textField></td>
-                        <td><g:textField name="Class5" class="Row0" value="0"
+                        <td><g:textField id="Class5Row0" name="Class5" class="Row0" value="0"
                                          onkeypress="return isNumberKey(event)"></g:textField></td>
-                        <td><g:textField name="Class6" class="Row0" value="0"
+                        <td><g:textField id="Class6Row0" name="Class6" class="Row0" value="0"
                                          onkeypress="return isNumberKey(event)"></g:textField></td>
-                        <td><g:textField name="Class7" class="Row0" value="0"
+                        <td><g:textField id="Class7Row0" name="Class7" class="Row0" value="0"
                                          onkeypress="return isNumberKey(event)"></g:textField></td>
-                        <td><g:textField name="Class8" class="Row0" value="0"
+                        <td><g:textField id="Class8Row0" name="Class8" class="Row0" value="0"
                                          onkeypress="return isNumberKey(event)"></g:textField></td>
-                        <td><g:textField name="Class9" class="Row0" value="0"
+                        <td><g:textField id="Class9Row0" name="Class9" class="Row0" value="0"
                                          onkeypress="return isNumberKey(event)"></g:textField></td>
-                        <td><g:textField name="Class10" class="Row0" value="0"
+                        <td><g:textField id="Class10Row0" name="Class10" class="Row0" value="0"
                                          onkeypress="return isNumberKey(event)"></g:textField></td>
-                        <td><g:textField name="Class11" class="Row0" value="0"
+                        <td><g:textField id="Class11Row0" name="Class11" class="Row0" value="0"
                                          onkeypress="return isNumberKey(event)"></g:textField></td>
-                        <td><g:textField name="Class12" class="Row0" value="0"
+                        <td><g:textField id="Class12Row0" name="Class12" class="Row0" value="0"
                                          onkeypress="return isNumberKey(event)"></g:textField></td>
-                        <td><g:textField name="College" class="Row0" value="0"
+                        <td><g:textField id="CollegeRow0" name="College" class="Row0" value="0"
                                          onkeypress="return isNumberKey(event)"></g:textField></td>
                         <td><input type="checkbox" value="Delete" name="foo" class="Row0"/></td>
                     </tr>
@@ -380,6 +682,9 @@
                     var clonedSection = $(".row").clone();
                     clonedSection.children().children().removeClass();
                     clonedSection.children().children().addClass("Row" + idCounter);
+                    var nam=clonedSection.children().children().attr("name");
+                    var cla=clonedSection.children().children().attr("class");
+                    clonedSection.children().children().each(function(){$(this).attr("id" , $(this).attr("name")+$(this).attr("class"))});
                     $('.employmentHistoryForm tr').eq(-2).before('<tr class = "row">' + clonedSection.html() + '</tr>');
                     idCounter++;
                 }
