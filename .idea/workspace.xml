@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b89d4ed4-0016-425a-b3f7-28bf3427e276" name="Default" comment="">
+    <list default="true" id="b89d4ed4-0016-425a-b3f7-28bf3427e276" name="Default" comment="prizePerClassPerSchool Per Cell onmousemove in view implemented. Overall schoolwise prize pending.">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/views/report/_tabbedForm.gsp" afterPath="$PROJECT_DIR$/grails-app/views/report/_tabbedForm.gsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/css/main.css" afterPath="$PROJECT_DIR$/web-app/css/main.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="FirstGrailsDemo.iws" />
@@ -13,10 +12,10 @@
     <file path="/School.groovy" changelist="b89d4ed4-0016-425a-b3f7-28bf3427e276" time="1375380752701" ignored="false" />
     <file path="/Samiti.groovy" changelist="b89d4ed4-0016-425a-b3f7-28bf3427e276" time="1375378370800" ignored="false" />
     <file path="/ReportController.groovy" changelist="b89d4ed4-0016-425a-b3f7-28bf3427e276" time="1375378679069" ignored="false" />
-    <file path="/Dummy.txt" changelist="b89d4ed4-0016-425a-b3f7-28bf3427e276" time="1375629713223" ignored="false" />
+    <file path="/Dummy.txt" changelist="b89d4ed4-0016-425a-b3f7-28bf3427e276" time="1375673787225" ignored="false" />
     <file path="/a.dummy" changelist="b89d4ed4-0016-425a-b3f7-28bf3427e276" time="1375379568056" ignored="false" />
     <file path="/create.gsp" changelist="b89d4ed4-0016-425a-b3f7-28bf3427e276" time="1375517445027" ignored="false" />
-    <file path="/_tabbedForm.gsp" changelist="b89d4ed4-0016-425a-b3f7-28bf3427e276" time="1375642867493" ignored="false" />
+    <file path="/_tabbedForm.gsp" changelist="b89d4ed4-0016-425a-b3f7-28bf3427e276" time="1375673364386" ignored="false" />
     <file path="/main.css" changelist="b89d4ed4-0016-425a-b3f7-28bf3427e276" time="1375554415595" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -135,9 +134,10 @@
       <file leaf-file-name="_tabbedForm.gsp" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/grails-app/views/report/_tabbedForm.gsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="462" column="16" selection-start="19054" selection-end="19054" vertical-scroll-proportion="0.82229966">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-27.940351">
               <folding>
-                <marker date="1375642874345" expanded="true" signature="18758:18783" placeholder="..." />
+                <marker date="1375673674989" expanded="true" signature="18795:18839" placeholder="..." />
+                <marker date="1375673674989" expanded="true" signature="26872:26916" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -564,7 +564,11 @@
       <created>1375554619993</created>
       <updated>1375554619993</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="prizePerClassPerSchool Per Cell onmousemove in view implemented. Overall schoolwise prize pending.">
+      <created>1375642976230</created>
+      <updated>1375642976230</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -604,6 +608,7 @@
       <window_info id="Grails View" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32991454" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="CDI" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32991454" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -611,14 +616,13 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24277017" sideWeight="0.6746167" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3253833" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24277017" sideWeight="0.6735043" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32649574" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32820514" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -664,7 +668,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="tabbedForm.gsp tabs added" />
+    <option name="LAST_COMMIT_MESSAGE" value="prizePerClassPerSchool Per Cell onmousemove in view implemented. Overall schoolwise prize pending." />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -682,6 +686,7 @@
     <MESSAGE value="tabbedForm.gsp added" />
     <MESSAGE value="tabbedForm.gsp added and edited" />
     <MESSAGE value="tabbedForm.gsp tabs added" />
+    <MESSAGE value="prizePerClassPerSchool Per Cell onmousemove in view implemented. Overall schoolwise prize pending." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -809,9 +814,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/grails-app/views/report/_tabbedForm.gsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="462" column="16" selection-start="19054" selection-end="19054" vertical-scroll-proportion="0.82229966">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-27.940351">
           <folding>
-            <marker date="1375642874345" expanded="true" signature="18758:18783" placeholder="..." />
+            <marker date="1375673674989" expanded="true" signature="18795:18839" placeholder="..." />
+            <marker date="1375673674989" expanded="true" signature="26872:26916" placeholder="..." />
           </folding>
         </state>
       </provider>

@@ -315,8 +315,10 @@
         })});
     $(function(){
         $("body").on('mouseover','input[id^=School]',function(){
+
             if(($(this).attr('id')!='SchoolT')){
                 var m='#'+ $(this).attr('id');
+
                 $(getSchoolwisePrizeCountDiv($(this).attr('class'))).insertAfter($(m));
             }
         })});
@@ -392,7 +394,7 @@
             }
         }else if(className==9){
             if(studentCount>=15 && studentCount<51){
-                returnVal="<table><thead><th>I</th><th>II</th><th>III</th></thead><tr><td>College Bag</td><td>0</td><td>0</td></tr></table>"
+                returnVal="<table><thead><th>I</th><th>II</th><th>III</th></thead><tr><td>College Bag(Big)</td><td>0</td><td>0</td></tr></table>"
             }
             else if(studentCount>=51){
                 returnVal="<table><thead><th>I</th><th>II</th><th>III</th></thead><tr><td>College Bag</td><td>Badi Ghadi</td><td>Pouch</td></tr></table>"
@@ -402,7 +404,7 @@
             }
         }else if(className==10){
             if(studentCount>=15 && studentCount<51){
-                returnVal="<table><thead><th>I</th><th>II</th><th>III</th></thead><tr><td>College Bag</td><td>0</td><td>0</td></tr></table>"
+                returnVal="<table><thead><th>I</th><th>II</th><th>III</th></thead><tr><td>College Bag(Big)</td><td>0</td><td>0</td></tr></table>"
             }
             else if(studentCount>=51){
                 returnVal="<table><thead><th>I</th><th>II</th><th>III</th></thead><tr><td>College Bag</td><td>Badi Ghadi</td><td>Pouch</td></tr></table>"
@@ -412,7 +414,7 @@
             }
         }else if(className==10){
             if(studentCount>=15 && studentCount<51){
-                returnVal="<table><thead><th>I</th><th>II</th><th>III</th></thead><tr><td>College Bag</td><td>0</td><td>0</td></tr></table>"
+                returnVal="<table><thead><th>I</th><th>II</th><th>III</th></thead><tr><td>College Bag(Big)</td><td>0</td><td>0</td></tr></table>"
             }
             else if(studentCount>=51){
                 returnVal="<table><thead><th>I</th><th>II</th><th>III</th></thead><tr><td>College Bag</td><td>Badi Ghadi</td><td>Pouch</td></tr></table>"
@@ -422,7 +424,7 @@
             }
         }else if(className==11){
             if(studentCount>=15 && studentCount<51){
-                returnVal="<table><thead><th>I</th><th>II</th><th>III</th></thead><tr><td>College Bag</td><td>0</td><td>0</td></tr></table>"
+                returnVal="<table><thead><th>I</th><th>II</th><th>III</th></thead><tr><td>College Bag(Big)</td><td>0</td><td>0</td></tr></table>"
             }
             else if(studentCount>=51){
                 returnVal="<table><thead><th>I</th><th>II</th><th>III</th></thead><tr><td>College Bag</td><td>Badi Ghadi</td><td>Pouch</td></tr></table>"
@@ -432,7 +434,7 @@
             }
         }else if(className==12){
             if(studentCount>=15 && studentCount<51){
-                returnVal="<table><thead><th>I</th><th>II</th><th>III</th></thead><tr><td>College Bag</td><td>0</td><td>0</td></tr></table>"
+                returnVal="<table><thead><th>I</th><th>II</th><th>III</th></thead><tr><td>College Bag(Big)</td><td>0</td><td>0</td></tr></table>"
             }
             else if(studentCount>=51){
                 returnVal="<table><thead><th>I</th><th>II</th><th>III</th></thead><tr><td>College Bag</td><td>Badi Ghadi</td><td>Pouch</td></tr></table>"
@@ -442,27 +444,203 @@
             }
         }else if(className==13){
             if(studentCount>=15 && studentCount<51){
-                returnVal="<table><thead><th>I</th><th>II</th><th>III</th></thead><tr><td>College Bag</td><td>0</td><td>0</td></tr></table>"
+                returnVal="<table><thead><th>I</th><th>II</th><th>III</th></thead><tr><td>College Bag(Big)</td><td>0</td><td>0</td></tr></table>"
             }
             else if(studentCount>=51){
-                returnVal="<table><thead><th>I</th><th>II</th><th>III</th></thead><tr><td>College Bag</td><td>College Bag</td><td>College Bag</td></tr></table>"
+                returnVal="<table><thead><th>I</th><th>II</th><th>III</th></thead><tr><td>College Bag(Big)</td><td>College Bag</td><td>College Bag</td></tr></table>"
             }
             else{
                 returnVal="<table><thead><th>I</th><th>II</th><th>III</th></thead><tr><td>0</td><td>0</td><td>0</td></tr></table>"
             }
         }
-        return "<div id='tooltip' style='background-color: #E0F0FF'>" + returnVal + "</div>"
+        return "<div id='tooltip' style='background-color: #E0F0FF;position:relative;'>" + returnVal + "</div>"
     }
     function getSchoolwisePrizeCountDiv(classRowIndex){
-        var m=document.getElementsByClassName(classRowIndex);
-        var i=0;
-        for(var n in m){
-            if(i==0){
-                continue;
-            }
-            i++;
-        }
 
+        var prizeMap=new Object();
+        prizeMap['Geometry Box +\nTulsi Goli']=0;
+        prizeMap['Sapsidi ka khel']=0;
+        prizeMap['Drawing Book +\nColour']=0;
+        prizeMap['Chhoti Ghadi']=0;
+        prizeMap['Karmphel khel']=0;
+        prizeMap['Pouch']=0;
+        prizeMap['College Bag']=0;
+        prizeMap['College Bag(Big)']=0;
+        prizeMap['Badi Ghadi']=0;
+        prizeMap['Diary +\nSMS Coupon To principal']=0;
+        var i=0;
+        var m=document.getElementsByClassName(classRowIndex);
+        var nameAttr;
+        Array.prototype.forEach.call(m, function(el) {
+            // Do stuff with the element
+            nameAttr=el.getAttribute('name');
+            if(nameAttr=="Class3"){
+                var val=parseInt(el.value);
+                if(val!=NaN){
+                    if(val>=15 && val<=50){
+                        prizeMap['Geometry Box +\nTulsi Goli']=prizeMap['Geometry Box +\nTulsi Goli']+1;
+
+                    }
+                    else if(val>50){
+                        prizeMap['Geometry Box +\nTulsi Goli']=prizeMap['Geometry Box +\nTulsi Goli']+1;
+                        prizeMap['Sapsidi ka khel']=prizeMap['Sapsidi ka khel']+1;
+                        prizeMap['Drawing Book +\nColour']=prizeMap['Drawing Book +\nColour']+1;
+
+                    }
+                }
+            }else if(nameAttr=="Class4"){
+                var val=parseInt(el.value);
+                if(val!=NaN){
+                    if(val>=15 && val<=50){
+                        prizeMap['Chhoti Ghadi']=prizeMap['Chhoti Ghadi']+1;
+
+                    }
+                    else if(val>50){
+                        prizeMap['Geometry Box +\nTulsi Goli']=prizeMap['Geometry Box +\nTulsi Goli']+1;
+                        prizeMap['Sapsidi ka khel']=prizeMap['Sapsidi ka khel']+1;
+                        prizeMap['Chhoti Ghadi']=prizeMap['Chhoti Ghadi']+1;
+
+                    }
+                }
+            }else if(nameAttr=="Class5"){
+                var val=parseInt(el.value);
+                if(val!=NaN){
+                    if(val>=15 && val<=50){
+                        prizeMap['Chhoti Ghadi']=prizeMap['Chhoti Ghadi']+1;
+
+                    }
+                    else if(val>50){
+                        prizeMap['Geometry Box +\nTulsi Goli']=prizeMap['Geometry Box +\nTulsi Goli']+1;
+                        prizeMap['Sapsidi ka khel']=prizeMap['Sapsidi ka khel']+1;
+                        prizeMap['Chhoti Ghadi']=prizeMap['Chhoti Ghadi']+1;
+
+                    }
+                }
+            }else if(nameAttr=="Class6"){
+                var val=parseInt(el.value);
+                if(val!=NaN){
+                    if(val>=15 && val<=50){
+                        prizeMap['Karmphel khel']=prizeMap['Karmphel khel']+1;
+
+                    }
+                    else if(val>50){
+                        prizeMap['Karmphel khel']=prizeMap['Karmphel khel']+1;
+                        prizeMap['Pouch']=prizeMap['Pouch']+1;
+                        prizeMap['Chhoti Ghadi']=prizeMap['Chhoti Ghadi']+1;
+
+                    }
+                }
+            }else if(nameAttr=="Class7"){
+                var val=parseInt(el.value);
+                if(val!=NaN){
+                    if(val>=15 && val<=50){
+                        prizeMap['Karmphel khel']=prizeMap['Karmphel khel']+1;
+
+                    }
+                    else if(val>50){
+                        prizeMap['Karmphel khel']=prizeMap['Karmphel khel']+1;
+                        prizeMap['Pouch']=prizeMap['Pouch']+1;
+                        prizeMap['Badi Ghadi']=prizeMap['Badi Ghadi']+1;
+
+                    }
+                }
+            }else if(nameAttr=="Class8"){
+                var val=parseInt(el.value);
+                if(val!=NaN){
+                    if(val>=15 && val<=50){
+                        prizeMap['Karmphel khel']=prizeMap['Karmphel khel']+1;
+
+                    }
+                    else if(val>50){
+                        prizeMap['Karmphel khel']=prizeMap['Karmphel khel']+1;
+                        prizeMap['Pouch']=prizeMap['Pouch']+1;
+                        prizeMap['Badi Ghadi']=prizeMap['Badi Ghadi']+1;
+
+                    }
+                }
+            }else if(nameAttr=="Class9"){
+                var val=parseInt(el.value);
+                if(val!=NaN){
+                    if(val>=15 && val<=50){
+                        prizeMap['College Bag(Big)']=prizeMap['College Bag(Big)']+1;
+
+                    }
+                    else if(val>50){
+                        prizeMap['College Bag']=prizeMap['College Bag']+1;
+                        prizeMap['Pouch']=prizeMap['Pouch']+1;
+                        prizeMap['Badi Ghadi']=prizeMap['Badi Ghadi']+1;
+
+                    }
+                }
+            }else if(nameAttr=="Class10"){
+                var val=parseInt(el.value);
+                if(val!=NaN){
+                    if(val>=15 && val<=50){
+                        prizeMap['College Bag(Big)']=prizeMap['College Bag(Big)']+1;
+
+                    }
+                    else if(val>50){
+                        prizeMap['College Bag']=prizeMap['College Bag']+1;
+                        prizeMap['Pouch']=prizeMap['Pouch']+1;
+                        prizeMap['Badi Ghadi']=prizeMap['Badi Ghadi']+1;
+
+                    }
+                }
+            }else if(nameAttr=="Class11"){
+                var val=parseInt(el.value);
+                if(val!=NaN){
+                    if(val>=15 && val<=50){
+                        prizeMap['College Bag(Big)']=prizeMap['College Bag(Big)']+1;
+
+                    }
+                    else if(val>50){
+                        prizeMap['College Bag']=prizeMap['College Bag']+1;
+                        prizeMap['Pouch']=prizeMap['Pouch']+1;
+                        prizeMap['Badi Ghadi']=prizeMap['Badi Ghadi']+1;
+
+                    }
+                }
+            }else if(nameAttr=="Class12"){
+                var val=parseInt(el.value);
+
+                if(val!=NaN){
+                    if(val>=15 && val<=50){
+                        prizeMap['College Bag(Big)']=prizeMap['College Bag(Big)']+1;
+
+                    }
+                    else if(val>50){
+                        prizeMap['College Bag']=prizeMap['College Bag']+1;
+                        prizeMap['Pouch']=prizeMap['Pouch']+1;
+                        prizeMap['Badi Ghadi']=prizeMap['Badi Ghadi']+1;
+
+                    }
+                }
+            }else if(nameAttr=="College"){
+                var val=parseInt(el.value);
+                if(val!=NaN){
+                    if(val>=15 && val<=50){
+                        prizeMap['College Bag(Big)']=prizeMap['College Bag(Big)']+1;
+
+                    }
+                    else if(val>50){
+                        prizeMap['College Bag(Big)']=prizeMap['College Bag(Big)']+1;
+                        prizeMap['College Bag']=prizeMap['College Bag']+2;
+                    }
+                }
+            }
+        });
+        var mn=""
+        var returnValue="<table><thead><tr><th>Geometry Box +<br/>Tulsi Goli</th><th>Sapsidi ka khel</th><th>Drawing Book +<br/>Colour</th><th>Chhoti Ghadi</th><th>Karmphel khel</th><th>Pouch</th><th>College Bag</th><th>College Bag(Big</th><th>Badi Ghadi</th><th>Diary +<br/>SMS Coupon To principal</th></tr></thead>" +
+                "<tbody><tr><td>"+prizeMap['Geometry Box +\nTulsi Goli']+"</td><td>"
+                +prizeMap['Sapsidi ka khel']+"</td><td>"+prizeMap['Drawing Book +\nColour']+
+                "</td><td>"+ prizeMap['Chhoti Ghadi']+"</td><td>"+prizeMap['Karmphel khel']+
+                "</td><td>"+prizeMap['Pouch']+
+                "</td><td>"+prizeMap['College Bag']+
+                "</td><td>"+prizeMap['College Bag(Big)']+
+                "</td><td>"+prizeMap['Badi Ghadi']+
+                "</td><td>"+prizeMap['Diary +\nSMS Coupon To principal']+
+                "</td></tr></tbody><table>";
+        return "<div id='tooltip' style='background-color: #E0F0FF;position:relative;'>" + returnValue + "</div>";
     }
 </script>
 <table>
